@@ -26,7 +26,7 @@ namespace alxGigo {
         H = DigitalPin.P1
     }
 
-    export enum motorPin {
+    export enum MotorPin {
         //% block="E"
         E = DigitalPin.P15,
         //% block="F"
@@ -37,17 +37,17 @@ namespace alxGigo {
         H = DigitalPin.P1
     }
 
-    export enum buttonPin {
+    export enum TouchButtonPin {
         //% block="A"
-        A = DigitalPin.P19,
+        A = DigitalPin.P20,
         //% block="E"
-        E = DigitalPin.P15,
+        E = DigitalPin.P16,
         //% block="F"
-        F = DigitalPin.P13,
+        F = DigitalPin.P14,
         //% block="G"
-        G = DigitalPin.P12,
+        G = DigitalPin.P2,
         //% block="H"
-        H = DigitalPin.P1
+        H = DigitalPin.P8
     }
 
     export enum LedState {
@@ -91,7 +91,38 @@ namespace alxGigo {
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.columns=3
     //% pin.fieldOptions.width=220
-    export function funcMotor(pin: MotorPin, direction: MotorDirection, speed: MotorSpeed): void {
-        pins.analogWritePin(pin, direction, 700)
+    //% speed.min=0 speed.max=1023 value.defl=512
+    export function funcMotor(pin: MotorPin, direction: MotorDirection, speed: number): void {
+        if (pin == MotorPin.E) {
+            pins.analogWritePin(AnalogPin.P15, direction)
+            pins.analogWritePin(AnalogPin.P16, speed)
+        }
+        if (pin == MotorPin.F) {
+            pins.analogWritePin(AnalogPin.P13, direction)
+            pins.analogWritePin(AnalogPin.P14, speed)
+        }
+        if (pin == MotorPin.G) {
+            pins.analogWritePin(AnalogPin.P12, direction)
+            pins.analogWritePin(AnalogPin.P2, speed)
+        }
+        if (pin == MotorPin.H) {
+            pins.analogWritePin(AnalogPin.P1, direction)
+            pins.analogWritePin(AnalogPin.P8, speed)
+        }
+    }
+
+    /**
+     * Touch bin
+     * @param pin the pin where button is connected
+     */
+    //% block="Κουμπί πίεσης στη θύρα %pin , είναι πατημένο"
+    //% group="GIGO"
+    //% weight=90
+    //% pin.fieldEditor="gridpicker"
+    //% pin.fieldOptions.columns=3
+    //% pin.fieldOptions.width=220
+    export function touchPressed(pin: TouchButtonPin): boolean {
+        pins.setPull(pin, PinPullMode.PullUp)
+        return !pins.digitalReadPin(pin)
     }
 }
