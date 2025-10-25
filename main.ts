@@ -1,55 +1,15 @@
 /**
- * DHT11 sensor extension for micro:bit
+ * LED Control Extension for micro:bit
  * by ChatGPT example
  */
 
-//% color=#00A6F0 icon="\uf2c9" block="DHT11 Sensor"
-namespace DHT11 {
-
-    // Store last read values
-    let lastTemp = 0
-    let lastHumi = 0
-
-    //% blockHidden=true
-    function readData(pin: DigitalPin): void {
-        let buffer: number[] = []
-        let checksum = 0
-
-        pins.digitalWritePin(pin, 0)
-        basic.pause(18)
-        pins.setPull(pin, PinPullMode.PullUp)
-        pins.digitalReadPin(pin)
-
-        while (pins.digitalReadPin(pin) == 1);
-        while (pins.digitalReadPin(pin) == 0);
-        while (pins.digitalReadPin(pin) == 1);
-
-        for (let i = 0; i < 40; i++) {
-            while (pins.digitalReadPin(pin) == 0);
-            let t = control.micros()
-            while (pins.digitalReadPin(pin) == 1);
-            let duration = control.micros() - t
-            buffer.push(duration > 50 ? 1 : 0)
-        }
-
-        let bytes: number[] = [0, 0, 0, 0, 0]
-        for (let i = 0; i < 5; i++) {
-            for (let j = 0; j < 8; j++) {
-                bytes[i] = (bytes[i] << 1) + buffer[i * 8 + j]
-            }
-        }
-
-        checksum = (bytes[0] + bytes[1] + bytes[2] + bytes[3]) & 0xFF
-        if (checksum == bytes[4]) {
-            lastHumi = bytes[0]
-            lastTemp = bytes[2]
-        }
-    }
+//% color=#FFD700 icon="\uf0eb" block="Gigo Robot"
+namespace alxGigo {
 
     /**
-     * Available pins for the DHT11 sensor
+     * Available pins for the LED
      */
-    export enum DHT11Pin {
+    export enum LedPin {
         //% block="P0"
         P0 = DigitalPin.P0,
         //% block="P1"
@@ -63,34 +23,30 @@ namespace DHT11 {
     }
 
     /**
-     * Get temperature in °C
-     * @param pin the pin where the DHT11 is connected
+     * Turn LED ON
+     * @param pin the pin where LED is connected
      */
-    //% block="temperature (°C) from DHT11 at pin %pin"
-    //% group="Read values"
+    //% block="turn ON LED at pin %pin"
+    //% group="LED"
     //% weight=100
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.columns=3
     //% pin.fieldOptions.width=220
-    export function temperature(pin: DHT11Pin): number {
-        readData(pin)
-        basic.pause(100)
-        return lastTemp
+    export function turnOn(pin: LedPin): void {
+        pins.digitalWritePin(pin, 1)
     }
 
     /**
-     * Get humidity in %
-     * @param pin the pin where the DHT11 is connected
+     * Turn LED OFF
+     * @param pin the pin where LED is connected
      */
-    //% block="humidity (%%) from DHT11 at pin %pin"
-    //% group="Read values"
+    //% block="turn OFF LED at pin %pin"
+    //% group="LED"
     //% weight=90
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.columns=3
     //% pin.fieldOptions.width=220
-    export function humidity(pin: DHT11Pin): number {
-        readData(pin)
-        basic.pause(100)
-        return lastHumi
+    export function turnOff(pin: LedPin): void {
+        pins.digitalWritePin(pin, 0)
     }
 }
