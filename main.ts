@@ -12,14 +12,42 @@ namespace alxGigo {
     export enum LedPin {
         //% block="B"
         B = DigitalPin.P14,
-        //% block="P1"
-        P1 = DigitalPin.P1,
-        //% block="P2"
-        P2 = DigitalPin.P2,
-        //% block="P8"
-        P8 = DigitalPin.P8,
-        //% block="P12"
-        P12 = DigitalPin.P12
+        //% block="C"
+        C = DigitalPin.P2,
+        //% block="D"
+        D = DigitalPin.P8,
+        //% block="E"
+        E = DigitalPin.P15,
+        //% block="F"
+        F = DigitalPin.P13,
+        //% block="G"
+        G = DigitalPin.P12,
+        //% block="H"
+        H = DigitalPin.P1
+    }
+
+    export enum motorPin {
+        //% block="E"
+        E = DigitalPin.P15,
+        //% block="F"
+        F = DigitalPin.P13,
+        //% block="G"
+        G = DigitalPin.P12,
+        //% block="H"
+        H = DigitalPin.P1
+    }
+
+    export enum buttonPin {
+        //% block="A"
+        A = DigitalPin.P19,
+        //% block="E"
+        E = DigitalPin.P15,
+        //% block="F"
+        F = DigitalPin.P13,
+        //% block="G"
+        G = DigitalPin.P12,
+        //% block="H"
+        H = DigitalPin.P1
     }
 
     export enum LedState {
@@ -32,6 +60,7 @@ namespace alxGigo {
     /**
      * Turn LED ON
      * @param pin the pin where LED is connected
+     * @param led_state the state of the LED 
      */
     //% block="LED στη θύρα %pin %led_state"
     //% group="LED"
@@ -44,7 +73,7 @@ namespace alxGigo {
     }
 
     /**
-     * Turn LED OFF
+     * Motor
      * @param pin the pin where LED is connected
      */
     //% block="turn OFF LED at pin %pin"
