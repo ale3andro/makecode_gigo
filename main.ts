@@ -57,6 +57,13 @@ namespace alxGigo {
         σβήσε = 0
     }
 
+    export enum MotorDirection {
+        //% block="ρολογιού"
+        ρολογιού = 1023,
+        //% block="αντίστροφη_ρολογιού"
+        αντίστροφη_ρολογιού = 0
+    }
+
     /**
      * Turn LED ON
      * @param pin the pin where LED is connected
@@ -68,21 +75,23 @@ namespace alxGigo {
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.columns=3
     //% pin.fieldOptions.width=220
-    export function turnOn(pin: LedPin, led_state: LedState): void {
+    export function funcLed(pin: LedPin, led_state: LedState): void {
         pins.digitalWritePin(pin, led_state)
     }
 
     /**
      * Motor
-     * @param pin the pin where LED is connected
+     * @param pin the pin where motor is connected
+     * @param direction the direction of the motor movement
+     * @param speed the speed of the motor
      */
-    //% block="turn OFF LED at pin %pin"
-    //% group="LED"
+    //% block="Κινητήρας στη θύρα %pin : κατεύθυνση %direction και ταχύτητα %speed"
+    //% group="MOTOR"
     //% weight=90
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.columns=3
     //% pin.fieldOptions.width=220
-    export function turnOff(pin: LedPin): void {
-        pins.digitalWritePin(pin, 0)
+    export function funcMotor(pin: MotorPin, direction: MotorDirection, speed: MotorSpeed): void {
+        pins.analogWritePin(pin, direction, 700)
     }
 }
