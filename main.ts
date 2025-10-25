@@ -3,7 +3,7 @@
  * by ChatGPT example
  */
 
-//% color=#FFD700 icon="\uf0eb" block="Gigo Robot"
+//% color=#2e752e icon="\uf0eb" block="Gigo Robot"
 namespace alxGigo {
 
     /**
