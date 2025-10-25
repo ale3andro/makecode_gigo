@@ -10,8 +10,8 @@ namespace alxGigo {
      * Available pins for the LED
      */
     export enum LedPin {
-        //% block="P0"
-        P0 = DigitalPin.P0,
+        //% block="B"
+        B = DigitalPin.P14,
         //% block="P1"
         P1 = DigitalPin.P1,
         //% block="P2"
