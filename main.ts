@@ -70,7 +70,7 @@ namespace alxGigo {
      * @param led_state the state of the LED 
      */
     //% block="LED στη θύρα %pin %led_state"
-    //% group="LED"
+    //% group="GIGO"
     //% weight=100
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.columns=3
@@ -86,7 +86,7 @@ namespace alxGigo {
      * @param speed the speed of the motor
      */
     //% block="Κινητήρας στη θύρα %pin : κατεύθυνση %direction και ταχύτητα %speed"
-    //% group="MOTOR"
+    //% group="GIGO"
     //% weight=90
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.columns=3
