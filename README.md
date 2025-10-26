@@ -1,8 +1,8 @@
-## pxt-makecode-gigo
+# pxt-makecode-gigo
 
 ![ale3andro-gigo](icon.png)
 
-# Περιγραφή
+## Περιγραφή
 
 Για τον προγραμματισμό του κιτ Ρομποτικής Gigo υπάρχουν 2 βασικοί τρόποι:
 
@@ -14,7 +14,15 @@
 
 ![gigorobots blocks](images/makecode-gigorobot-blocks.png)
 
-# Ενδεικτικό σενάριο
+## Ενδεικτικό σενάριο
 
 ![gigorobots blocks scenario](images/random-scenario.png)
 
+## Εγκατάταση χρήση
+
+0. Ανοίγεις το makecode, πατάς το + Επεκτάσεις και στη σελίδα που ανοίγει κάνεις επικόλληση το link αυτού του αποθετηρίου **https://github.com/ale3andro/pxt-makecode-gigo**
+
+1. Κατεβάζεις από τα [releases](https://github.com/ale3andro/pxt-makecode-gigo/releases) του αποθετηρίου τo hex αρχείο με την τελευταία έκδοση και το κάνεις import.
+
+
+Καλή διασκέδαση
