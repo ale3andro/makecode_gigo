@@ -50,6 +50,17 @@ namespace alxGigo {
         H = DigitalPin.P8
     }
 
+    export enum LineSensorPin {
+        //% block="C"
+        C = DigitalPin.P2,
+        //% block="D"
+        D = DigitalPin.P8,
+        //% block="G"
+        G = DigitalPin.P12,
+        //% block="H"
+        H = DigitalPin.P1
+    }
+
     export enum ServoPin {
         //% block="B"
         B = AnalogPin.P14,
@@ -161,5 +172,24 @@ namespace alxGigo {
         pins.servoSetPulse(pin, pulse);
     }
 
-
+    /**
+     * Line Sensor
+     * @param pin the pin where sensor is connected
+     */
+    //% block="Αισθητήρας γραμμής στη θύρα %pin , πατάει μαύρη γραμμή;"
+    //% group="GIGO"
+    //% weight=90
+    //% pin.fieldEditor="gridpicker"
+    //% pin.fieldOptions.columns=3
+    //% pin.fieldOptions.width=220
+    export function lineSensor(pin: LineSensorPin): boolean {
+        /*
+            A typical line-following sensor outputs:
+                0 (LOW) when it detects black (no reflection),
+                1 (HIGH) when it detects white (reflection).
+                It’s just a digital signal — so you can read it using pins.digitalReadPin().
+        */
+        pins.setPull(pin, PinPullMode.PullUp);
+        return pins.digitalReadPin(pin) == 0
+    }
 }
