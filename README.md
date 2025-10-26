@@ -18,7 +18,7 @@
 
 ![gigorobots blocks scenario](images/random-scenario.png)
 
-## Εγκατάταση χρήση
+## Εγκατάσταση - χρήση
 
 0. Ανοίγεις το makecode, πατάς το + Επεκτάσεις και στη σελίδα που ανοίγει κάνεις επικόλληση το link αυτού του αποθετηρίου **https://github.com/ale3andro/pxt-makecode-gigo**
 
