@@ -50,6 +50,23 @@ namespace alxGigo {
         H = DigitalPin.P8
     }
 
+    export enum ServoPin {
+        //% block="B"
+        B = AnalogPin.P14,
+        //% block="C"
+        C = AnalogPin.P2,
+        //% block="D"
+        D = AnalogPin.P8,
+        //% block="E"
+        E = AnalogPin.P15,
+        //% block="F"
+        F = AnalogPin.P13,
+        //% block="G"
+        G = AnalogPin.P12,
+        //% block="H"
+        H = AnalogPin.P1
+    }
+
     export enum LedState {
         //% block="άναψε"
         άναψε = 1,
@@ -112,7 +129,7 @@ namespace alxGigo {
     }
 
     /**
-     * Touch bin
+     * Touch pin
      * @param pin the pin where button is connected
      */
     //% block="Κουμπί πίεσης στη θύρα %pin , είναι πατημένο"
@@ -125,4 +142,24 @@ namespace alxGigo {
         pins.setPull(pin, PinPullMode.PullUp)
         return !pins.digitalReadPin(pin)
     }
+
+    /**
+     * Servo
+     * @param pin the pin where servo is connected
+     * @param angle the desired angle of the servo
+     */
+    //% block="Σέρβο στη θύρα %pin , όρισε γωνία %angle"
+    //% group="GIGO"
+    //% weight=90
+    //% pin.fieldEditor="gridpicker"
+    //% pin.fieldOptions.columns=3
+    //% pin.fieldOptions.width=220
+    //% angle.min=0 angle.max=180 angle.defl=90
+    export function setServo(pin: ServoPin, angle: number): void {
+        // Convert angle (0–180) to pulse width (500–2500 µs)
+        let pulse = (angle * 2000 / 180) + 500;
+        pins.servoSetPulse(pin, pulse);
+    }
+
+
 }
