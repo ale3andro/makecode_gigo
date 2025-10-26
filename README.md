@@ -38,7 +38,7 @@
 
 0. Ανοίγεις το makecode, πατάς το **+ Επεκτάσεις** και στη σελίδα που ανοίγει κάνεις επικόλληση το link αυτού του αποθετηρίου **https://github.com/ale3andro/pxt-makecode-gigo**
 
-1. Κατεβάζεις από τα [releases](https://github.com/ale3andro/pxt-makecode-gigo/releases) του αποθετηρίου τo hex αρχείο με την τελευταία έκδοση και το κάνεις import από το **+ Επεκτάσεις**
+1. Κατεβάζεις από τα [releases](https://github.com/ale3andro/pxt-makecode-gigo/releases) του αποθετηρίου τo hex αρχείο με την τελευταία έκδοση και το κάνεις import από το **+ Επεκτάσεις** και μετά **Import File**.
 
 
 Καλή διασκέδαση
