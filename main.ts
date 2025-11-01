@@ -192,4 +192,46 @@ namespace alxGigo {
         pins.setPull(pin, PinPullMode.PullUp);
         return pins.digitalReadPin(pin) == 0
     }
+
+    /**
+     * Two digit integer
+     * @param num the number to be displayed
+     */
+    //% block="Εμφάνισε διψήφιο ακέραιο %number"
+    //% group="GIGO"
+    //% weight=90
+    //% num.min=10 num.max=99 num.defl=50
+    export function showTwoDigitInteger(num: number): void {
+        if (num>99 || num<10)
+            return;
+        let digits: number[][][] = [];
+        digits.push([ [9,9], [9,9], [9,9], [9,9], [9,9] ]); //number 0
+        digits.push([ [0,9], [0,9], [0,9], [0,9], [0,9] ]); //number 1
+        digits.push([ [9,9], [0,9], [9,9], [9,0], [9,9] ]); //number 2
+        digits.push([ [9,9], [0,9], [9,9], [0,9], [9,9] ]); //number 3
+        digits.push([ [9,0], [9,0], [9,9], [0,9], [0,9] ]); //number 4
+        digits.push([ [9,9], [9,0], [9,9], [0,9], [9,9] ]); //number 5
+        digits.push([ [9,9], [9,0], [9,9], [9,9], [9,9] ]); //number 6
+        digits.push([ [9,9], [0,9], [0,9], [0,9], [0,9] ]); //number 7
+        digits.push([ [9,9], [9,9], [0,0], [9,9], [9,9] ]); //number 8
+        digits.push([ [9,9], [9,9], [0,9], [0,9], [0,9] ]); //number 9
+
+        let digit0 = Math.trunc(num / 10);
+        let digit1 = num % 10;
+        basic.clearScreen() 
+        let x=0, y=0, i=0;
+        
+        for (y=0; y<5; y++) {
+            // Plot digit0
+            for (i=0; i<2; i++) {
+                if (digits[digit0][y][i] == 9)
+                    led.plot(i, y);
+            }
+            // Plot digit1
+            for (i=3; i<5; i++) {
+                if (digits[digit1][y][i-3] == 9)
+                    led.plot(i, y);
+            }
+        }
+    }
 }
