@@ -1,5 +1,5 @@
 /**
- * LED Control Extension for micro:bit
+ * Makcode Extension for micro:bit
  * by ChatGPT example
  */
 
@@ -233,5 +233,65 @@ namespace alxGigo {
                     led.plot(i, y);
             }
         }
+    }
+}
+
+//% color=#FF6600 icon="\uf085" block="Gigo Sensors"
+namespace alxSensors {
+
+    export enum tempHumPin {
+        //% block="B"
+        B = DigitalPin.P14,
+        //% block="C"
+        C = DigitalPin.P2,
+        //% block="D"
+        D = DigitalPin.P8,
+        //% block="E"
+        E = DigitalPin.P15,
+        //% block="F"
+        F = DigitalPin.P13,
+        //% block="G"
+        G = DigitalPin.P12,
+        //% block="H"
+        H = DigitalPin.P1
+    }
+    
+
+    /**
+     * Read temperature from a DHT11 Sensor
+     * @param pin the pin where DHT11 sensor is connected
+     */
+    //% block="διάβασε θερμοκρασία (DHT11) από τη θύρα %pin"
+    //% pin.fieldEditor="gridpicker"
+    //% pin.fieldOptions.columns=3
+    //% pin.fieldOptions.width=220
+    export function readDHT11Temperature(pin: tempHumPin): number {
+        dht11_dht22.queryData(
+            DHTtype.DHT11,
+            <DigitalPin><number>pin,
+            true,
+            false,
+            true
+        )
+        return dht11_dht22.readData(dataType.temperature);
+    }
+
+    /**
+     * Read humidity from a DHT11 Sensor
+     * @param pin the pin where DHT11 sensor is connected
+     */
+    //% block="διάβασε υγρασία (DHT11) από τη θύρα %pin"
+    //% pin.fieldEditor="gridpicker"
+    //% pin.fieldOptions.columns=3
+    //% pin.fieldOptions.width=220
+    export function readDHT11Humidity(pin: tempHumPin): number {
+        dht11_dht22.queryData(
+            DHTtype.DHT11,
+            <DigitalPin><number>pin,
+            true,
+            false,
+            true
+        )
+        return dht11_dht22.readData(dataType.humidity);
     }
 }

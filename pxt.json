@@ -5,7 +5,8 @@
     "license": "MIT",
     "dependencies": {
         "core": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "DHT11": "github:alankrantas/pxt-DHT11_DHT22"
     },
     "files": [
         "main.ts"
